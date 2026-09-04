@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* 1. Raw palette — the literal ramp. Never changes across themes. */
 :root {
   --black: #000000;
@@ -19,18 +21,19 @@
   --fg-faint: var(--faint);
   --border: var(--rule);
   --danger: var(--error);
+
+  --content-max: 72rem;
+  --gutter: 1.5rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: var(--black);
-    --foreground: var(--wash);
-    --bg-subtle: var(--ink);
-    --fg-muted: var(--faint);
-    --fg-faint: var(--muted);
-    --border: #2a2a28;
-    --danger: #e5645a;
-  }
+.dark {
+  --background: var(--black);
+  --foreground: var(--wash);
+  --bg-subtle: var(--ink);
+  --fg-muted: var(--faint);
+  --fg-faint: var(--muted);
+  --border: #2a2a28;
+  --danger: #e5645a;
 }
 
 /* 3. Tailwind theme — maps tokens into utility namespaces. Only --color-* and --font-* generate utilities. */
@@ -61,4 +64,11 @@
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+@utility content {
+  max-inline-size: var(--content-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  width: 100%;
 }
