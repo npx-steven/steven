@@ -1,9 +1,5 @@
-import ThemeToggle from "@/components/theme-toggle";
+import PageHeader from "@/components/header/page-header";
 
 export default function Home() {
-  return (
-    <div>
-      <ThemeToggle />
-    </div>
-  );
+  return <PageHeader />;
 }
