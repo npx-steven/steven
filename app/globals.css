@@ -14,7 +14,7 @@
   --error: #b3261e;
 
   /*  2. Semantic layer — role names. These are what flip. */
-  --background: var(--page);
+  --background: var(--wash);
   --foreground: var(--ink);
   --bg-subtle: var(--wash);
   --fg-muted: var(--muted);
@@ -28,7 +28,7 @@
 
 .dark {
   --background: var(--black);
-  --foreground: var(--wash);
+  --foreground: var(--page);
   --bg-subtle: var(--ink);
   --fg-muted: var(--faint);
   --fg-faint: var(--muted);

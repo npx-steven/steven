@@ -29,7 +29,7 @@ function Name({ name }: NameProps) {
       animate={isInView ? "show" : "hidden"}
       variants={variants}
       viewport={{ once: true }}
-      className="inline-flex font-display text-6xl font-semibold"
+      className="inline-flex font-display text-5xl md:text-6xl font-semibold"
     >
       {letters.map((char, i) => (
         <motion.span key={`${char}-${i}`} variants={variants} custom={i}>

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Inter_Tight } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import SocialBar from "@/components/social-bar";
+import SocialBar from "@/components/sections/social-bar";
 
 const inter = Inter({
   subsets: ["latin"],

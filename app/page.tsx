@@ -1,5 +1,11 @@
-import PageHeader from "@/components/header/page-header";
+import About from "@/components/sections/about/about";
+import Header from "@/components/sections/header/header";
 
 export default function Home() {
-  return <PageHeader />;
+  return (
+    <main>
+      <Header />
+      <About />
+    </main>
+  );
 }

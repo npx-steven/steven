@@ -2,7 +2,7 @@
 
 import { IoMdMail, IoLogoGithub, IoLogoLinkedin } from "react-icons/io";
 import { motion } from "motion/react";
-import ThemeToggle from "./theme-toggle";
+import ThemeToggle from "../ui/theme-toggle";
 
 const socials = [
   {
@@ -28,7 +28,7 @@ const socials = [
 function SocialBar() {
   return (
     <section className="content flex flex-row justify-between items-center">
-      <div className="flex flex-row items-center gap-3 py-5">
+      <div className="flex flex-row items-center gap-3 py-8">
         {socials.map(({ href, label, Icon, duration }) => {
           const external = !href.startsWith("mailto:");
           return (
