@@ -9,7 +9,7 @@ const INTEREST =
 
 function About() {
   return (
-    <section className="content flex flex-col ">
+    <section className="content flex flex-col mb-8">
       <div className="flex flex-col gap-3 mb-6">
         <h2 className="font-sans text-sm font-medium tracking-widest text-muted dark:text-faint">
           ABOUT ME
