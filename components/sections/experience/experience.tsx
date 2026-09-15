@@ -71,7 +71,7 @@ function Experience() {
 
   return (
     <section
-      className="content flex flex-col gap-6"
+      className="content flex flex-col gap-6 mb-8"
       aria-labelledby="experience-heading"
     >
       <h2
@@ -93,7 +93,7 @@ function Experience() {
           role="tablist"
           aria-label="Companies"
           onKeyDown={onKeyDown}
-          className="flex shrink-0 touch-pan-x gap-x-4 select-none overflow-x-auto overflow-y-hidden overscroll-x-none border-b border-border [-webkit-touch-callout:none] sm:min-w-40 sm:touch-auto sm:flex-col sm:gap-x-0 sm:overflow-visible sm:border-r sm:border-b-0"
+          className="flex shrink-0 touch-pan-x gap-x-4 select-none overflow-x-auto overflow-y-hidden overscroll-x-none border-b border-border [-webkit-touch-callout:none] sm:min-w-40 sm:touch-auto sm:flex-col sm:gap-x-0 sm:overflow-visible sm:border-r sm:border-b-0 scrollbar-none"
         >
           {JOBS.map((j, i) => {
             const selected = i === active;
