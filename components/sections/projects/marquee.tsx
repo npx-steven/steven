@@ -12,6 +12,7 @@ import ProjectCard, { CARD_WIDTH } from "./project-card";
 
 const IDLE = 45; // px/s at rest — positive drifts right-to-left
 const MAX = 140; // px/s at the edges
+const ENTRY = MAX * 2; // px/s the track glides in at before settling to IDLE
 const GAP = 16; // single source of truth for the track gap
 const DRAG_SLOP = 8; // px of movement before a tap counts as a drag
 const MAX_COPIES = 12; // sanity cap so a single project can't explode the DOM
@@ -143,21 +144,24 @@ function Marquee() {
     }
   }
 
-  // Reduced motion / no JS: a plain swipeable row.
-  if (!animated) {
-    return (
-      <ul
-        style={{ gap: GAP }}
-        className="flex snap-x snap-mandatory overflow-x-auto px-6 scrollbar-none [&::-webkit-scrollbar]:hidden"
-      >
-        {PROJECTS.map((p) => (
-          <ProjectCard key={p.id} project={p} />
-        ))}
-      </ul>
-    );
+  // Glide in: the same hand-off as releasing a flick. Jump the spring, let it
+  // settle to idle. Harmless under reduced motion, where the frame loop is off.
+  function onEnter() {
+    speed.jump(ENTRY);
+    speed.set(IDLE);
   }
 
-  return (
+  // Reduced motion / no JS: a plain swipeable row.
+  const track = !animated ? (
+    <ul
+      style={{ gap: GAP }}
+      className="flex snap-x snap-mandatory overflow-x-auto px-6 scrollbar-none [&::-webkit-scrollbar]:hidden"
+    >
+      {PROJECTS.map((p) => (
+        <ProjectCard key={p.id} project={p} />
+      ))}
+    </ul>
+  ) : (
     <div
       className="cursor-grab touch-pan-y overflow-hidden active:cursor-grabbing "
       onPointerMove={onPointerMove}
@@ -179,6 +183,22 @@ function Marquee() {
         ))}
       </motion.div>
     </div>
+  );
+
+  // The fade wraps both branches, so it's already in the server HTML and the
+  // post-hydration swap to the animated track happens out of sight.
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 8, filter: "blur(4px)" }}
+      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      viewport={{ once: true, amount: 0.3 }}
+      onViewportEnter={onEnter}
+      transition={
+        animated ? { duration: 0.6, ease: "easeOut" } : { duration: 0 }
+      }
+    >
+      {track}
+    </motion.div>
   );
 }
 
