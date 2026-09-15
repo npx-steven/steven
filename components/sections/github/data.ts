@@ -1,24 +1,7 @@
 import "server-only";
+import type { ContributionCalendar } from "./types";
 
 const GITHUB_LOGIN = "npx-steven";
-
-export type ContributionLevel =
-  | "NONE"
-  | "FIRST_QUARTILE"
-  | "SECOND_QUARTILE"
-  | "THIRD_QUARTILE"
-  | "FOURTH_QUARTILE";
-
-export type ContributionDay = {
-  date: string;
-  contributionCount: number;
-  contributionLevel: ContributionLevel;
-};
-
-export type ContributionCalendar = {
-  totalContributions: number;
-  weeks: { contributionDays: ContributionDay[] }[];
-};
 
 //My query format github graphql will return back
 const QUERY = `
