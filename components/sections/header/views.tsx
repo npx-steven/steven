@@ -15,7 +15,6 @@ export type ViewCountProps = {
   from?: number;
   to?: number;
   duration?: number;
-  /** Deceleration strength. ~3–4 matches circOut; higher brakes harder. */
   strength?: number;
   repeat?: boolean;
 };
@@ -26,7 +25,7 @@ const easeOutPower = (power: number) => (t: number) =>
 
 function ViewCount({
   from = 0,
-  to = 1566,
+  to = 0,
   duration = 2.5,
   strength = 5,
   repeat = false,
@@ -34,25 +33,44 @@ function ViewCount({
   const ref = React.useRef(null);
   const isInView = useInView(ref, { once: !repeat });
   const reduceMotion = useReducedMotion();
-
+  const [views, setViews] = React.useState<number | null>(null);
   const count = useMotionValue(from);
   const text = useTransform(count, (v) => format.format(Math.round(v)));
 
   React.useEffect(() => {
-    if (!isInView) return;
+    let cancelled = false;
+
+    fetch("/api/views", { method: "POST" })
+      .then((res) => res.json())
+      .then((data) => {
+        if (!cancelled && typeof data.views === "number") {
+          setViews(data.views);
+        }
+      })
+      .catch(() => {});
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const target = views ?? to;
+
+  React.useEffect(() => {
+    if (!isInView || views === null) return;
 
     if (reduceMotion) {
-      count.set(to);
+      count.set(target);
       return;
     }
 
-    const controls = animate(count, to, {
+    const controls = animate(count, target, {
       duration,
       ease: easeOutPower(strength),
     });
 
     return () => controls.stop();
-  }, [isInView, count, to, duration, strength, reduceMotion]);
+  }, [isInView, views, target, count, duration, strength, reduceMotion]);
 
   return (
     <span
@@ -63,7 +81,7 @@ function ViewCount({
       <motion.span aria-hidden className="text-sm">
         {text}
       </motion.span>
-      <span className="sr-only">{format.format(to)}</span>
+      <span className="sr-only">{format.format(target)}</span>
       <span>views</span>
     </span>
   );
