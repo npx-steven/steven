@@ -27,29 +27,31 @@ const socials = [
 
 function SocialBar() {
   return (
-    <section className="content flex flex-row justify-between items-center">
-      <div className="flex flex-row items-center gap-3 py-8">
-        {socials.map(({ href, label, Icon, duration }) => {
-          const external = !href.startsWith("mailto:");
-          return (
-            <motion.a
-              key={label}
-              href={href}
-              aria-label={label}
-              target={external ? "_blank" : undefined}
-              rel={external ? "noopener noreferrer" : undefined}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration }}
-              className="text-faint hover:text-foreground"
-            >
-              <Icon className="size-6" />
-            </motion.a>
-          );
-        })}
-      </div>
-      <ThemeToggle />
-    </section>
+    <div className="sticky top-0 z-50 bg-background">
+      <section className="content flex flex-row justify-between items-center">
+        <div className="flex flex-row items-center gap-3 py-5">
+          {socials.map(({ href, label, Icon, duration }) => {
+            const external = !href.startsWith("mailto:");
+            return (
+              <motion.a
+                key={label}
+                href={href}
+                aria-label={label}
+                target={external ? "_blank" : undefined}
+                rel={external ? "noopener noreferrer" : undefined}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration }}
+                className="text-faint hover:text-foreground"
+              >
+                <Icon className="size-6" />
+              </motion.a>
+            );
+          })}
+        </div>
+        <ThemeToggle />
+      </section>
+    </div>
   );
 }
 
