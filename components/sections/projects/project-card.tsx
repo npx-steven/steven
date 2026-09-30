@@ -95,7 +95,7 @@ function ProjectCard({
             {project.tags.map((tag) => (
               <li
                 key={tag}
-                className="rounded-full border border-white/20 px-2 py-0.5 text-[11px] text-rule"
+                className="rounded-full px-2 py-0.5 text-[11px] bg-rule text-black font-medium"
               >
                 {tag}
               </li>
