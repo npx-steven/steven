@@ -6,7 +6,7 @@ import Projects from "@/components/sections/projects/projects";
 
 export default function Home() {
   return (
-    <main>
+    <main className="flex flex-col gap-20 pb-20 md:gap-28 md:pb-28">
       <Header />
       <About />
       <Experience />

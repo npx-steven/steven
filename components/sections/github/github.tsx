@@ -8,7 +8,7 @@ async function GithubActivity() {
 
   return (
     <section
-      className="content flex flex-col gap-6 mb-8"
+      className="content flex flex-col gap-6"
       aria-labelledby="github-heading"
     >
       <h2

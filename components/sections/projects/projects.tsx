@@ -3,7 +3,7 @@ import Marquee from "./marquee";
 function Projects() {
   return (
     <section
-      className="flex flex-col gap-6 pb-8 mb-8"
+      className="flex flex-col gap-6"
       aria-labelledby="projects-heading"
     >
       <h2
