@@ -3,6 +3,7 @@ import { Inter, Inter_Tight } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import SocialBar from "@/components/sections/social-bar";
+import Footer from "@/components/sections/footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           <SocialBar />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
