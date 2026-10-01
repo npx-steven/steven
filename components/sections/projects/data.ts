@@ -38,7 +38,7 @@ export const PROJECTS: Project[] = [
     date: "Sept 2026",
     description:
       "My personal website portfolio, designed and build on Next.js.",
-    image: "/projects/siteline.png",
+    image: "/projects/steven_portfolio.png",
     tags: ["TypeScript", "Tailwind CSS", "Next.js"],
     repo: "https://github.com/npx-steven/steven",
     live: "https://www.stevenpartida.com/",
