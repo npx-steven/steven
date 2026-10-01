@@ -32,4 +32,15 @@ export const PROJECTS: Project[] = [
     repo: "https://github.com/npx-steven/siteline",
     live: "https://siteline-alpha.vercel.app/projects",
   },
+  {
+    id: "Steven",
+    title: "Steven",
+    date: "Sept 2026",
+    description:
+      "My personal website portfolio, designed and build on Next.js.",
+    image: "/projects/siteline.png",
+    tags: ["TypeScript", "Tailwind CSS", "Next.js"],
+    repo: "https://github.com/npx-steven/steven",
+    live: "https://www.stevenpartida.com/",
+  },
 ];
