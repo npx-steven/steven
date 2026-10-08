@@ -13,7 +13,7 @@ export const PROJECTS: Project[] = [
   {
     id: "Francisco's Roofing",
     title: "Francisco's Roofing Inc.",
-    date: "Dec 2022",
+    date: "Jan 2025",
     description:
       "Public marketing site for a local roofing contractor, with an owner-managed project gallery.",
     image: "/projects/franciscos_roofing_inc.png",
